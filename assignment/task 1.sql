@@ -28,6 +28,8 @@ course_name char(30) not null,
 credits int not null,
 teacher_id int not null,
 foreign key(teacher_id)references teacher(teacher_id)
+  on delete cascade
+  on update cascade
 );
 
 create table enrollments(
@@ -36,7 +38,11 @@ student_id int not null,
 course_id varchar(6) not null,
 enrollment_date date not null,
 foreign key(student_id)references students(student_id),
+  on delete cascade
+  on update cascade,
 foreign key(course_id)references courses(course_id)
+  on delete cascade
+  on update cascade
 );
 
 alter table enrollments auto_increment = 300;
@@ -47,6 +53,8 @@ student_id int not null,
 amount decimal(9,2) not null,
 payment_date date not null,
 foreign key(student_id)references students(student_id)
+  on delete cascade
+  on update cascade
 );
 
 alter table payments auto_increment = 500;
